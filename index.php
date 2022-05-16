@@ -47,23 +47,23 @@ $lista_clientes = $clienteDAO->read();
                 </tr>
             </thead>
             <tbody>
-                <?php  // listando os usuários
+                <?php  // listando os clientes
                 if ($lista_clientes->rowCount() > 0) :
                     $osclientes = $lista_clientes->fetchAll(\PDO::FETCH_ASSOC);
-                    foreach ($osclientes as $cliente) {
+                    foreach ($osclientes as $cliente_consulta) {
                         echo "<tr>";
-                        echo "<td>" . htmlentities($cliente['id'], ENT_QUOTES, 'UTF-8') . "</td>";
-                        echo "<td>" . htmlentities($cliente['nome'], ENT_QUOTES, 'UTF-8') . "</td>";
-                        echo "<td>" . htmlentities($cliente['cpf'], ENT_QUOTES, 'UTF-8') . "</td>";
-                        echo "<td>" . htmlentities($cliente['endereco'], ENT_QUOTES, 'UTF-8') . "</td>";
-                        echo "<td>" . htmlentities($cliente['bairro'], ENT_QUOTES, 'UTF-8') . "</td>";
-                        echo "<td>" . htmlentities($cliente['cidade'], ENT_QUOTES, 'UTF-8') . "</td>";
-                        echo "<td>" . htmlentities($cliente['uf'], ENT_QUOTES, 'UTF-8') . "</td>";
-                        echo "<td>" . htmlentities($cliente['cep'], ENT_QUOTES, 'UTF-8') . "</td>";
-                        echo "<td>" . htmlentities($cliente['telefone'], ENT_QUOTES, 'UTF-8') . "</td>";
-                        echo "<td>" . htmlentities($cliente['email'], ENT_QUOTES, 'UTF-8') . "</td>";
-                        echo "<td> <a href='index.php?acao=alterar&id=" . $cliente['id'] . "'>Alterar</a> |
-                        <a href='index.php?acao=excluir&id=" . $cliente['id'] . "'>Excluir</a>
+                        echo "<td>" . htmlentities($cliente_consulta['id'], ENT_QUOTES, 'UTF-8') . "</td>";
+                        echo "<td>" . htmlentities($cliente_consulta['nome'], ENT_QUOTES, 'UTF-8') . "</td>";
+                        echo "<td>" . htmlentities($cliente_consulta['cpf'], ENT_QUOTES, 'UTF-8') . "</td>";
+                        echo "<td>" . htmlentities($cliente_consulta['endereco'], ENT_QUOTES, 'UTF-8') . "</td>";
+                        echo "<td>" . htmlentities($cliente_consulta['bairro'], ENT_QUOTES, 'UTF-8') . "</td>";
+                        echo "<td>" . htmlentities($cliente_consulta['cidade'], ENT_QUOTES, 'UTF-8') . "</td>";
+                        echo "<td>" . htmlentities($cliente_consulta['uf'], ENT_QUOTES, 'UTF-8') . "</td>";
+                        echo "<td>" . htmlentities($cliente_consulta['cep'], ENT_QUOTES, 'UTF-8') . "</td>";
+                        echo "<td>" . htmlentities($cliente_consulta['telefone'], ENT_QUOTES, 'UTF-8') . "</td>";
+                        echo "<td>" . htmlentities($cliente_consulta['email'], ENT_QUOTES, 'UTF-8') . "</td>";
+                        echo "<td> <a href='index.php?acao=alterar&id=" . $cliente_consulta['id'] . "'>Alterar</a> |
+                        <a href='index.php?acao=excluir&id=" . $cliente_consulta['id'] . "'>Excluir</a>
                         </td>";
                         echo "</tr>";
                     }
@@ -124,7 +124,6 @@ $lista_clientes = $clienteDAO->read();
                 else :
                     switch ($acao) {
                         case 'incluir':  // ação de incluir cliente
-                            //$cliente = new \App\Model\Cliente();
                             $erro = "";
                             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) :
                                 $erro .= "Email inválido <br>";

@@ -55,13 +55,13 @@ class ClienteDAO
             $cliente = new \App\Model\Cliente();
             $cliente->setId($id_aux);
             $cliente->setNome($aux->nome);
-            $cliente->setNome($aux->cpf);
-            $cliente->setNome($aux->endereco);
-            $cliente->setNome($aux->bairro);
-            $cliente->setNome($aux->cidade);
-            $cliente->setNome($aux->uf);
-            $cliente->setNome($aux->cep);
-            $cliente->setNome($aux->telefone);
+            $cliente->setCpf($aux->cpf);
+            $cliente->setEndereco($aux->endereco);
+            $cliente->setBairro($aux->bairro);
+            $cliente->setCidade($aux->cidade);
+            $cliente->setUf($aux->uf);
+            $cliente->setCep($aux->cep);
+            $cliente->setTelefone($aux->telefone);
             $cliente->setEmail($aux->email);
 
             return $cliente;
