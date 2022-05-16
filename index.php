@@ -24,7 +24,7 @@ $lista_clientes = $clienteDAO->read();
 </head>
 
 <body>
-    <div class="container">
+    <div>
         <?php
         include_once "funcao.php";
         include_once "menu.html";
