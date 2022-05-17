@@ -68,12 +68,12 @@ class Compra
         $this->id_produto = $id_produto;
     }
 
-    public function getFuncionario (): String
+    public function getIdFuncionario (): String
     {
         return $this->id_funcionario;
     }
 
-    public function setFuncionario (String $id_funcionario)
+    public function setIdFuncionario (String $id_funcionario)
     {
         $this->id_funcionario = $id_funcionario;
     }
