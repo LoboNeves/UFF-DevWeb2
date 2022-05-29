@@ -7,5 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'GUMP\\' => array($vendorDir . '/wixel/gump/src'),
+    'CoffeeCode\\Router\\' => array($vendorDir . '/coffeecode/router/src'),
     'App\\' => array($baseDir . '/App'),
 );

@@ -4,17 +4,21 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitf12e055d46c456e5ef43e9273d2e502e
+class ComposerStaticInit05d6cc4b6ee682b45776c63af17d2470
 {
     public static $files = array (
         'da253f61703e9c22a5a34f228526f05a' => __DIR__ . '/..' . '/wixel/gump/gump.class.php',
-        '63694871ff9cc4544e8745183b10b372' => __DIR__ . '/../..' . '/App/Config/config.php',
+        'aafd65e732fda5822d5db479193584b4' => __DIR__ . '/../..' . '/App/Core/Config.php',
     );
 
     public static $prefixLengthsPsr4 = array (
         'G' => 
         array (
             'GUMP\\' => 5,
+        ),
+        'C' => 
+        array (
+            'CoffeeCode\\Router\\' => 18,
         ),
         'A' => 
         array (
@@ -26,6 +30,10 @@ class ComposerStaticInitf12e055d46c456e5ef43e9273d2e502e
         'GUMP\\' => 
         array (
             0 => __DIR__ . '/..' . '/wixel/gump/src',
+        ),
+        'CoffeeCode\\Router\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/coffeecode/router/src',
         ),
         'App\\' => 
         array (
@@ -40,9 +48,9 @@ class ComposerStaticInitf12e055d46c456e5ef43e9273d2e502e
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitf12e055d46c456e5ef43e9273d2e502e::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitf12e055d46c456e5ef43e9273d2e502e::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitf12e055d46c456e5ef43e9273d2e502e::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit05d6cc4b6ee682b45776c63af17d2470::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit05d6cc4b6ee682b45776c63af17d2470::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit05d6cc4b6ee682b45776c63af17d2470::$classMap;
 
         }, null, ClassLoader::class);
     }
