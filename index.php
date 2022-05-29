@@ -1,7 +1,22 @@
 <?php
 
-require 'App/Model/cliente.php';
-require 'App/Model/clienteDAO.php';
+require("vendor/autoload.php");
+
+$validator = new GUMP("pt-br");
+
+// regras de filtragem
+$filters =
+    [
+        'nome' => 'trim|sanitize_string|upper_case',
+        'email' => 'trim|sanitize_email|lower_case',
+        'bt_acao' => 'trim|sanitize_string|lower_case'
+    ];
+// regras de validação
+$rules =
+    [
+        'nome'    => 'required|min_len,2|max_len,40',
+        'email'  => 'required|valid_email'
+    ];
 
 // criando um objeto cliente
 $cliente = new \App\Model\Cliente();

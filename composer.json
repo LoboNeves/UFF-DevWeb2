@@ -1,0 +1,21 @@
+{
+    "name":"crud2/crud2",
+    "description": "Exemplo com biblioteca de terceiro",
+    "type": "project",
+    "license": "MIT",
+    "authors":[
+        {
+            "name": "leo",
+            "email": "leo@teste.com"
+        }
+    ],
+    "autoload":{
+         "psr-4":{
+             "App\\":"App/"
+         },
+         "files":["App/Config/config.php"]
+    },
+    "require": {
+        "wixel/gump": "^1.12"
+    }
+}
