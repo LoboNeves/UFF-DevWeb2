@@ -7,7 +7,7 @@ define('SENHA','');         // senha usuário da base de dados
 
 //Constante que indica a URL básica da aplicação
 
-define("URL_BASE", "http://localhost/DevWeb2");
+define("URL_BASE", "http://localhost:8080/DevWeb2");
 
 //Constante que indica a URL básica da images
 define("URL_IMG", URL_BASE."/public/images/");
@@ -31,7 +31,7 @@ define('DIR_IMG_CAPTCHA', "E:/DocDan_Wampserver/www/DevWeb2/App/writable/");
 define('DIR_IMG_UPLOAD', "E:/DocDan_Wampserver/www/DevWeb2/public/upload/");
 
 // URL imagem upload
-define('URL_IMG_UPLOAD', "http://localhost/DevWeb2/upload/");
+define('URL_IMG_UPLOAD', "http://localhost:8080/DevWeb2/upload/");
 
 // Quantidade de registros exibidos na página
 define("REGISTROS_PAG", 4);

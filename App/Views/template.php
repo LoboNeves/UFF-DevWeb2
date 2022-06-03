@@ -8,7 +8,7 @@
     <link href="<?= URL_CSS ?>bootstrap.min.css" rel="stylesheet">
     <link href="<?= URL_JS ?>sweetalert2/sweetalert2.css" rel="stylesheet">
     <link href="<?= FONTAWESOME ?>" rel="stylesheet">
-    <title>Blog de Notícia</title>
+    <title>CompraVenda</title>
 </head>
 
 <body>
@@ -22,10 +22,21 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="/Home">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link active" href="<?= URL_BASE ?>/home">Home <span class="sr-only">(current)</span></a>
                 <?php
                 if (isset($_SESSION['id'])) : ?>
-                    <a class="nav-item nav-link" href="<?= URL_BASE ?>/Dashboard">Dashboard</a>
+                    <?php if($_SESSION['papelFuncionario'] == 0): ?>
+                        <!-- Links para acesso de admin -->
+                        
+                    <?php elseif($_SESSION['papelFuncionario'] == 1): ?>
+                        <!-- Links para acesso de vendedor -->
+                        <a class="nav-item nav-link" href="<?= URL_BASE ?>/Clientes">Clientes</a>
+                        <a class="nav-item nav-link" href="<?= URL_BASE ?>/Vendas">Vendas</a>
+
+                    <?php elseif($_SESSION['papelFuncionario'] == 2): ?>
+                        <!-- Links para acesso de comprador -->
+
+                    <?php endif ?>
                     <a class="nav-item nav-link" href="<?= URL_BASE ?>/logout">Logout</a>
                 <?php else : ?>
                     <a class="nav-item nav-link" href="<?= URL_BASE ?>/login">Área Restrita</a>

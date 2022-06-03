@@ -15,11 +15,11 @@ class Home extends BaseController
     {
         // instanciar o model
         // $this->model método herdado de BaseController
-        $artigoModel = $this->model("ArtigoModel");
+        $produtoModel = $this->model("ProdutoModel");
 
-        $artigos = $artigoModel->read()->fetchAll(\PDO::FETCH_ASSOC);
+        $produtos = $produtoModel->read()->fetchAll(\PDO::FETCH_ASSOC);
 
-        $data = ['artigos' => $artigos];
+        $data = ['produtos' => $produtos];
 
         $this->view('home/index', $data);
     }

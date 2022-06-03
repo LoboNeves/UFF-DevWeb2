@@ -10,13 +10,13 @@ class Dashboard extends BaseController
     function __construct()
     {
         session_start();
-        if (!Funcoes::usuarioLogado()) :
-            Funcoes::redirect("Home");
+        if (!Funcoes::funcionarioLogado()) :
+            Funcoes::redirect("home");
         endif;
     }
 
     public function index()
     {
-        $this->view('dashboard/index');
+        $this->view('dashboardVendedor/index');
     }
 }

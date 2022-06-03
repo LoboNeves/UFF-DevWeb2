@@ -8,16 +8,20 @@ $route->namespace("App\Controllers");
 /**
  * parte publica
  */
-$route->get("/", "AcessoRestrito:login");
-$route->get("/home", "AcessoRestrito:login");
+$route->get("/", "Home:index");
+$route->get("/home", "Home:index");
 $route->get("/login", "AcessoRestrito:login");
 $route->post("/logar", "AcessoRestrito:logar");  // <= rota para metodo POST do from login
 /**
  * parte restrita
  */
-$route->get("/Dashboard", "Dashboard:index");
+//$route->get("/Dashboard", "Dashboard:index");
 $route->get("/logout", "AcessoRestrito:logout");
 $route->get("/painelusuario", "User:index");
+/**
+ * parte restrita - vendedores
+ */
+$route->get("/dashboardvendedor", "DashboardVendedor:index");
 /**
  * parte restrita - usuários
  */
