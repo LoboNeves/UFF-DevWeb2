@@ -4,7 +4,7 @@ namespace App\models;
 
 class Produto
 {
-    private $id, $nome_produto, $descricao, $preco_compra, $preco_venda, $quantidade_disponivel, $liberado_venda, $id_categoria;
+    private $id, $nome_produto, $descricao, $preco_compra, $preco_venda, $quantidade_disponível, $liberado_venda, $id_categoria;
 
     public function __construct()
     {
@@ -13,7 +13,7 @@ class Produto
         $this->descricao = "";
         $this->preco_compra = 0;
         $this->preco_venda = 0;
-        $this->quantidade_disponivel = 0;
+        $this->quantidade_disponível = 0;
         $this->liberado_venda = "";
         $this->id_categoria = "";
     }
@@ -70,12 +70,12 @@ class Produto
 
     public function getQuantidadeDisponivel ()
     {
-        return $this->quantidade_disponivel;
+        return $this->quantidade_disponível;
     }
 
-    public function setQuantidadeDisponivel ($quantidade_disponivel)
+    public function setQuantidadeDisponivel ($quantidade_disponível)
     {
-        $this->quantidade_disponivel = $quantidade_disponivel;
+        $this->quantidade_disponível = $quantidade_disponível;
     }
 
     public function getLiberadoVenda ()

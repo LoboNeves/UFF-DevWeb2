@@ -21,7 +21,7 @@ $route->get("/painelusuario", "User:index");
 /**
  * parte restrita - vendedores
  */
-$route->get("/dashboardvendedor", "DashboardVendedor:index");
+$route->get("/DashboardVendedor", "DashboardVendedor:index");
 /**
  * parte restrita - usuários
  */
