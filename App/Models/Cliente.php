@@ -11,7 +11,7 @@ class Cliente
     {
         $this->id = 0;
         $this->nome = "";
-        $this->cpf = 0;
+        $this->cpf = "";
         $this->endereco = "";
         $this->bairro = "";
         $this->cidade = "";

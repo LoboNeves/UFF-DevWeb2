@@ -79,14 +79,14 @@ class ClienteModel extends BaseModel{
         }
     }
     
-    public function delete($cliente)
+    public function delete($id)
     {
         try {
             $sql = "DELETE FROM clientes WHERE id = ?";
             $conn = ClienteModel::getConexao();
 
             $stmt = $conn->prepare($sql);
-            $stmt->bindValue(1, $cliente->getId());
+            $stmt->bindValue(1, $id);
             $stmt->execute();
             $conn = null;
         } catch (PDOException $e) {

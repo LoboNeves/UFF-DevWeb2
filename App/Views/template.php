@@ -22,7 +22,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="<?= URL_BASE ?>/home">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link active text-primary" href="<?= URL_BASE ?>/home">Home <span class="sr-only">(current)</span></a>
                 <?php
                 if (isset($_SESSION['id'])) : ?>
                     <?php if($_SESSION['papelFuncionario'] == 0): ?>
@@ -30,14 +30,14 @@
                         
                     <?php elseif($_SESSION['papelFuncionario'] == 1): ?>
                         <!-- Links para acesso de vendedor -->
-                        <a class="nav-item nav-link" href="<?= URL_BASE ?>/Clientes">Clientes</a>
-                        <a class="nav-item nav-link" href="<?= URL_BASE ?>/Vendas">Vendas</a>
+                        <a class="nav-item nav-link text-success" href="<?= URL_BASE ?>/Clientes">Clientes</a>
+                        <a class="nav-item nav-link text-success" href="<?= URL_BASE ?>/Vendas">Vendas</a>
 
                     <?php elseif($_SESSION['papelFuncionario'] == 2): ?>
                         <!-- Links para acesso de comprador -->
 
                     <?php endif ?>
-                    <a class="nav-item nav-link" href="<?= URL_BASE ?>/logout">Logout</a>
+                    <a class="nav-item nav-link text-danger" href="<?= URL_BASE ?>/logout">Logout</a>
                 <?php else : ?>
                     <a class="nav-item nav-link" href="<?= URL_BASE ?>/login">Área Restrita</a>
                 <?php endif ?>

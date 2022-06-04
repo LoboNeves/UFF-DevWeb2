@@ -3,7 +3,9 @@
 // listando os produtos
 if (isset($_SESSION['id']) && isset($_SESSION['nomeFuncionario'])) : ?>
 
-
+    <div class="alert alert-success" role="alert">
+        <h5>Usuario logado com sucesso</h5>
+    </div>
     <div class="row">
         <div class="card mt-3 border-0">
             <div class="card-body px-2">
@@ -14,16 +16,5 @@ if (isset($_SESSION['id']) && isset($_SESSION['nomeFuncionario'])) : ?>
 
             </div>
         </div>
-        <div class="card mt-3 border-0">
-            <div class="card-body px-2">
-            <a href="#" class="btn btn-outline-success">Produtos</a>
-            </div>
-        </div>
-        <div class="card mt-3 border-0">
-            <div class="card-body px-2">
-            <a href="<?= url('painelusuario') ?>" class="btn btn-outline-primary">Usuarios</a>
-            </div>
-        </div>
-
     </div>
 <?php endif; ?>
