@@ -73,14 +73,14 @@ class VendaModel extends BaseModel{
         }
     }
     
-    public function delete($venda)
+    public function delete($id)
     {
         try {
             $sql = "DELETE FROM vendas WHERE id = ?";
             $conn = VendaModel::getConexao();
 
             $stmt = $conn->prepare($sql);
-            $stmt->bindValue(1, $venda->getId());
+            $stmt->bindValue(1, $id);
             $stmt->execute();
             $conn = null;
         } catch (PDOException $e) {

@@ -1,3 +1,4 @@
+<h1 class="text-center">Produtos disponíveis para venda</h1>
 <?php
 // listando os produtos
 $produtos = $data['produtos'];

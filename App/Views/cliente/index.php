@@ -36,7 +36,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="<?= url('salvarinclusao') ?>" id="formInclusao" method="POST">
+                <form action="<?= url('salvarinclusaocliente') ?>" id="formInclusao" method="POST">
                     <div id="mensagem_erro" name="mensagem_erro"></div>
                     <input type="hidden" id="CSRF_token" name="CSRF_token" value="" />
                     <div class="form-group">
@@ -97,7 +97,7 @@
             </div>
             <div class="modal-body">
 
-                <form action="<?= url('gravaralteracao') ?>" id="formAltercao" method="POST">
+                <form action="<?= url('gravaralteracaocliente') ?>" id="formAltercao" method="POST">
 
                     <div id="mensagem_erro_alteracao" name="mensagem_erro_alteracao"></div>
 

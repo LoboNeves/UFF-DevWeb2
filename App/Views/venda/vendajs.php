@@ -2,7 +2,7 @@
     function load_data(page) {
 
         var ajax_request = new XMLHttpRequest();
-        ajax_request.open('GET', '<?= url('navegacliente') . '/' ?>' + page);
+        ajax_request.open('GET', '<?= url('navegavenda') . '/' ?>' + page);
         ajax_request.send();
         ajax_request.onreadystatechange = function() {
             if (ajax_request.readyState == 4 && ajax_request.status == 200) {
@@ -19,37 +19,34 @@
 
     $(document).ready(function() {
 
-        // carregar dos dados dos clientes
+        // carregar dos dados das vendas
         load_data(1);
 
         // ************************************************************************
-        // INCLUIR NOVO CLIENTE
+        // INCLUIR NOVA VENDA
 
-        // clicar no botão de novo cliente
+        // clicar no botão de nova venda
         $('#btIncluir').on('click', function() {
 
-            $("#nome").val("");
-            $("#cpf").val("");
-            $("#endereco").val("");
-            $("#bairro").val("");
-            $("#cidade").val("");
-            $("#uf").val("");
-            $("#cep").val("");
-            $("#telefone").val("");
-            $("#email").val(""); // limpar os inputs
-            //$("#senha").val(""); // limpar as mensagens de erros de validação
+            $("#quantidade_venda").val("");
+            $("#data_venda").val("");
+            $("#valor_venda").val("");
+            $("#id_cliente").val("");
+            $("#id_produto").val("");
+            $("#id_funcionario").val("");// limpar os inputs
+            // limpar as mensagens de erros de validação
             $("#mensagem_erro").html("");
             $("#mensagem_erro").removeClass("alert alert-danger")
 
             $.ajax({
-                url: "<?= url('incluircliente') ?>", // chamar o método para obter o CSRF token
+                url: "<?= url('incluirvenda') ?>", // chamar o método para obter o CSRF token
                 type: "GET",
                 dataType: "JSON",
                 success: function(data) {
                     // receber o CSRF token o colocá-lo no input hidden do form modal
                     $('[name="CSRF_token"]').val(data.token);
                     // apresentar o modal
-                    $("#modalNovoCliente").modal('show');
+                    $("#modalNovaVenda").modal('show');
                 },
                 error: function(data) {
                     Swal.fire({
@@ -57,7 +54,7 @@
                         text: "Erro Inesperado",
                         icon: "error",
                     });
-                    $("#modalNovoCliente").modal('hide');
+                    $("#modalNovaVenda").modal('hide');
                 }
             });
         })
@@ -66,7 +63,7 @@
         // salvar os dados da inclusão
         $('#btSalvarInclusao').on('click', function() {
             $.ajax({
-                url: "<?= url('salvarinclusaocliente') ?>", // chama o método para inclusão
+                url: "<?= url('salvarinclusaovenda') ?>", // chama o método para inclusão
                 type: "POST",
                 data: $('#formInclusao').serialize(), //codifica o formulário como uma string para envio.
                 dataType: "JSON",
@@ -75,10 +72,10 @@
                     if (data.status) //if success close modal and reload ajax table
                     {  Swal.fire({
                             title: "Sucesso",
-                            text: "Cliente Incluído Com Sucesso",
+                            text: "Venda Incluída Com Sucesso",
                             icon: "success",
                         });
-                        $("#modalNovoCliente").modal('hide');
+                        $("#modalNovaVenda").modal('hide');
                     } else {
                         $('[name="mensagem_erro"]').addClass('alert alert-danger');
                         $('[name="mensagem_erro"]').html(data.erros);
@@ -90,36 +87,33 @@
                         text: "Erro Inesperado",
                         icon: "error",
                     });
-                    $("#modalNovoCliente").modal('hide');
+                    $("#modalNovaVenda").modal('hide');
                 }
             });
         })
 
 
         // ************************************************************************
-        // ALTERAÇÃO DOS DADOS DO USUÁRIO
+        // ALTERAÇÃO DOS DADOS DA VENDA
 
-        // Clicar no botão de alteração de dados de um usuário
+        // Clicar no botão de alteração de dados de uma venda
         // observe que o botão é inserido dinamicamente na página
 
         $(document).on("click", "#btAlterar", function() {
 
             var id = $(this).attr("data-id");
 
-            $("#nome_alteracao").val("");
-            $("#cpf_alteracao").val("");
-            $("#endereco_alteracao").val("");
-            $("#bairro_alteracao").val("");
-            $("#cidade_alteracao").val("");
-            $("#uf_alteracao").val("");
-            $("#cep_alteracao").val("");
-            $("#telefone_alteracao").val("");
-            $("#email_alteracao").val("");
+            $("#quantidade_venda_alteracao").val("");
+            $("#data_venda_alteracao").val("");
+            $("#valor_venda_alteracao").val("");
+            $("#id_cliente_alteracao").val("");
+            $("#id_produto_alteracao").val("");
+            $("#id_funcionario_alteracao").val("");
             $("#mensagem_erro_alteracao").html("");
             $("#mensagem_erro_alteracao").removeClass("alert alert-danger")
 
             $.ajax({
-                url: "<?= url('alteracaocliente') ?>/" + id,
+                url: "<?= url('alteracaovenda') ?>/" + id,
                 type: "GET",
                 dataType: "JSON",
                 success: function(data) {
@@ -127,18 +121,15 @@
                     // Update CSRF hash
                     $('[name="CSRF_token"]').val(data.token);
 
-                    $('[name="nome_alteracao"]').val(data.nome);
-                    $('[name="cpf_alteracao"]').val(data.cpf);
-                    $('[name="endereco_alteracao"]').val(data.endereco);
-                    $('[name="bairro_alteracao"]').val(data.bairro);
-                    $('[name="cidade_alteracao"]').val(data.cidade);
-                    $('[name="uf_alteracao"]').val(data.uf);
-                    $('[name="cep_alteracao"]').val(data.cep);
-                    $('[name="telefone_alteracao"]').val(data.telefone);
-                    $('[name="email_alteracao"]').val(data.email);
+                    $('[name="quantidade_venda_alteracao"]').val(data.quantidade_venda);
+                    $('[name="data_venda_alteracao"]').val(data.data_venda);
+                    $('[name="valor_venda_alteracao"]').val(data.valor_venda);
+                    $('[name="id_cliente_alteracao"]').val(data.id_cliente);
+                    $('[name="id_produto_alteracao"]').val(data.id_produto);
+                    $('[name="id_funcionario_alteracao"]').val(data.id_funcionario);
                     $('[name="id_alteracao"]').val(data.id);
 
-                    $("#modalAlterarCliente").modal('show');
+                    $("#modalAlterarVenda").modal('show');
                 },
                 error: function(data) {
                     Swal.fire({
@@ -146,17 +137,17 @@
                         text: "Erro Inesperado",
                         icon: "error",
                     });
-                    $("#modalAlterarCliente").modal('hide');
+                    $("#modalAlterarVenda").modal('hide');
                 }
             });
 
         });
 
-        // salvar dados da altercao do cliente
+        // salvar dados da altercao da venda
         $('#btSalvarAlteracao').on('click', function() {
 
             $.ajax({
-                url: "<?= url('gravaralteracaocliente') ?>",
+                url: "<?= url('gravaralteracaovenda') ?>",
                 type: "POST",
                 data: $('#formAltercao').serialize(),
                 dataType: "JSON",
@@ -169,10 +160,10 @@
                     {
                         Swal.fire({
                             title: "Sucesso",
-                            text: "Cliente Alterado Com Sucesso",
+                            text: "Venda Alterada Com Sucesso",
                             icon: "success",
                         });
-                        $("#modalAlterarCliente").modal('hide');
+                        $("#modalAlterarVenda").modal('hide');
 
                     } else {
 
@@ -187,25 +178,25 @@
                         text: "Erro Inesperado",
                         icon: "error",
                     });
-                    $("#modalAlterarCliente").modal('hide');
+                    $("#modalAlterarVenda").modal('hide');
 
                 }
             });
         })
 
         // ************************************************************************
-        // EXCLUSÃO DO USUÁRIO
+        // EXCLUSÃO DA VENDA
 
-        // Clicar no botão de exclusão de um usuário
+        // Clicar no botão de exclusão de uma venda
         // observe que o botão é inserido dinamicamente na página
         $(document).on("click", "#btExcluir", function() {
 
             var id = $(this).attr("data-id");
-            var nome = $(this).attr("data-nome");
+            var nome = $(this).attr("data-produto");
 
             Swal.fire({
-                title: 'Confirma a Exclusão do Cliente?',
-                text: nome,
+                title: 'Confirma a Exclusão da Venda?',
+                //text: nome, //Adaptar para aparecer o nome do produto
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
@@ -215,7 +206,7 @@
                 if (result.isConfirmed) {
 
                     $.ajax({
-                        url: "<?= url('excluircliente') ?>/" + id,
+                        url: "<?= url('excluirvenda') ?>/" + id,
                         type: "GET",
                         dataType: "JSON",
                         success: function(data) {
@@ -223,7 +214,7 @@
                             {
                                 Swal.fire({
                                     title: "Sucesso",
-                                    text: "Cliente Excluido Com Sucesso",
+                                    text: "Venda Excluida Com Sucesso",
                                     icon: "success",
                                 });
 

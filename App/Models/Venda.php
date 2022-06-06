@@ -11,10 +11,10 @@ class Venda
         $this->id = 0;
         $this->quantidade_venda = 0;
         $this->data_venda = "";
-        $this->valor_venda = 0;
-        $this->id_cliente = "";
-        $this->id_produto = "";
-        $this->id_funcionario = "";
+        $this->valor_venda = 0.0;
+        $this->id_cliente = 0;
+        $this->id_produto = 0;
+        $this->id_funcionario = 0;
     }
 
     public function getId ()
