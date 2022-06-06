@@ -138,6 +138,20 @@ class Venda extends BaseController
                     //$hashId = hash('sha512', $chaveGerada);  // calcular o hash da id (chave primária) gerada
                     //$clienteModel->createHashID($chaveGerada, $hashId);
 
+                    //Alterar preço de venda e quantidade disponível do produto
+                    $produtoModel = $this->model("ProdutoModel");
+                    $produto_aux = $produtoModel->get($venda->getIdProduto());
+                    $produto = new \App\models\Produto();
+                    $produto->setQuantidadeDisponivel($produto_aux["quantidade_disponível"] - $venda->getQuantidadeVenda());
+                    $produto->setNomeProduto($produto_aux["nome_produto"]);
+                    $produto->setDescricao($produto_aux["descricao"]);
+                    $produto->setPrecoCompra($produto_aux["preco_compra"]);
+                    $produto->setPrecoVenda($venda->getValorVenda());
+                    $produto->setLiberadoVenda($produto_aux["liberado_venda"]);
+                    $produto->setIdCategoria($produto_aux["id_categoria"]);
+                    $produto->setId($venda->getIdProduto());
+                    $produtoModel->update($produto);
+
                     $data['status'] = true;          // retornar inclusão realizada
                     echo json_encode($data);
                     exit();

@@ -12,7 +12,7 @@ class Produto
         $this->nome_produto = "";
         $this->descricao = "";
         $this->preco_compra = 0;
-        $this->preco_venda = 0;
+        $this->preco_venda = 0.0;
         $this->quantidade_disponível = 0;
         $this->liberado_venda = "";
         $this->id_categoria = "";
