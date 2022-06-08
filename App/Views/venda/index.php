@@ -54,7 +54,17 @@
                     </div>
                     <div class="form-group">
                         <label for="id_produto">Produto*</label>
-                        <input type="id_produto" class="form-control" id="id_produto" name="id_produto">
+                        <!--<input type="id_produto" class="form-control" id="id_produto" name="id_produto">-->
+                        <select type="id_produto" class="form-control" id="id_produto" name="id_produto">
+                        <?php
+                        $produtos = $data['produtos_lista'];
+                        if (!empty($produtos)) :
+                            foreach ($produtos as $produto) { ?>
+                                <?php if ($produto['quantidade_disponível'] > 0 && $produto['liberado_venda'] == "S") : ?>
+                                    <option value="<?= $produto['id']; ?>"><?= $produto['nome_produto']; ?></option>
+                                <?php endif; ?>
+                        <?php } endif;?>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="id_funcionario">Funcionario*</label>
@@ -107,7 +117,17 @@
                     </div>
                     <div class="form-group">
                         <label for="id_produto">Produto*</label>
-                        <input type="id_produto" class="form-control" id="id_produto_alteracao" name="id_produto_alteracao">
+                        <!--<input type="id_produto" class="form-control" id="id_produto_alteracao" name="id_produto_alteracao">-->
+                        <select type="id_produto" class="form-control" id="id_produto_alteracao" name="id_produto_alteracao">
+                        <?php
+                        $produtos = $data['produtos_lista'];
+                        if (!empty($produtos)) :
+                            foreach ($produtos as $produto) { ?>
+                                <?php if ($produto['quantidade_disponível'] > 0 && $produto['liberado_venda'] == "S") : ?>
+                                    <option value="<?= $produto['id']; ?>"><?= $produto['nome_produto']; ?></option>
+                                <?php endif; ?>
+                        <?php } endif;?>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="id_funcionario">Funcionario*</label>

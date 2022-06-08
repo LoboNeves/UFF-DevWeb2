@@ -10,12 +10,26 @@ class Cliente extends BaseController
 {
 
     protected $filters = [
-        'nome' => 'trim|sanitize_string|upper_case',
+        'nome' => 'trim|sanitize_string',
+        'cpf' => 'trim|sanitize_string',
+        'endereco' => 'trim|sanitize_string',
+        'bairro' => 'trim|sanitize_string',
+        'cidade' => 'trim|sanitize_string',
+        'uf' => 'trim|sanitize_string|upper_case',
+        'cep' => 'trim',
+        'telefone' => 'trim',
         'email' => 'trim|sanitize_email|lower_case'
     ];
 
     protected $rules = [
         'nome'    => 'required|min_len,2|max_len,40',
+        'cpf' => 'required|exact_len,14',
+        'endereco' => 'required|max_len,40',
+        'bairro' => 'required|max_len,40',
+        'cidade' => 'required|max_len,40',
+        'uf' => 'required|exact_len,2',
+        'cep' => 'required|exact_len,8',
+        'telefone' => 'required|between_len,8;13',
         'email'  => 'required|valid_email'
     ];
 

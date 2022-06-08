@@ -10,11 +10,21 @@ class Venda extends BaseController
 {
 
     protected $filters = [
-        //'quantidade_venda' => 'trim|sanitize_int'
+        'quantidade_venda' => 'trim',
+        'data_venda'    => 'trim|sanitize_string',
+        'valor_venda'    => 'trim',
+        'id_cliente'    => 'trim',
+        'id_produto'    => 'trim',
+        'id_funcionario'    => 'trim'
     ];
 
     protected $rules = [
-        'quantidade_venda'    => 'required|min_len,1|max_len,10'
+        'quantidade_venda'    => 'required|min_len,1|max_len,10|integer',
+        'data_venda'    => 'required',
+        'valor_venda'    => 'required|min_len,1|max_len,10|float',
+        'id_cliente'    => 'required|min_len,1|max_len,10|integer',
+        'id_produto'    => 'required|min_len,1|max_len,10|integer',
+        'id_funcionario'    => 'required|min_len,1|max_len,10|integer'
     ];
 
     function __construct()
@@ -29,7 +39,13 @@ class Venda extends BaseController
     {
         if ($_SERVER['REQUEST_METHOD'] == 'GET') :
 
-            $this->view('venda/index', [], 'venda/vendajs');
+            $produtoModel = $this->model("ProdutoModel");
+
+            //Criando produtos_lista e mandando para a view para fazer o select box só com os produtos permitidos na view.
+            $produtos_lista = $produtoModel->read()->fetchAll(\PDO::FETCH_ASSOC);
+            $data = ['produtos_lista' => $produtos_lista];
+
+            $this->view('venda/index', $data, 'venda/vendajs');
         else :
             Funcoes::redirect("Home");
         endif;
@@ -136,7 +152,7 @@ class Venda extends BaseController
                     $vendaModel = $this->model("VendaModel");
                     $vendaModel->create($venda); // incluir venda no BD
                     //$hashId = hash('sha512', $chaveGerada);  // calcular o hash da id (chave primária) gerada
-                    //$clienteModel->createHashID($chaveGerada, $hashId);
+                    //$clienteModel->createHashID($chaveGerada, $hashId);                   
 
                     //Alterar preço de venda e quantidade disponível do produto
                     $produtoModel = $this->model("ProdutoModel");
