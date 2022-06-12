@@ -11,8 +11,7 @@ class CategoriaModel extends BaseModel{
             $conn = CategoriaModel::getConexao();
 
             $stmt = $conn->prepare($sql);
-            $stmt->bindValue(1, $categoria->getTitulo());
-            $stmt->bindValue(2, $categoria->getConteudo());
+            $stmt->bindValue(1, $categoria->getNomeCategoria());
             $stmt->execute();
             $conn = null;
         } catch (PDOException $e) {
@@ -56,6 +55,7 @@ class CategoriaModel extends BaseModel{
 
             $stmt = $conn->prepare($sql);
             $stmt->bindValue(1, $categoria->getNomeCategoria());
+            $stmt->bindValue(2,$categoria->getId());
             $stmt->execute();
             $conn = null;
         } catch (PDOException $e) {
@@ -63,14 +63,14 @@ class CategoriaModel extends BaseModel{
         }
     }
     
-    public function delete($categoria)
+    public function delete($id)
     {
         try {
             $sql = "DELETE FROM categorias WHERE id = ?";
             $conn = CategoriaModel::getConexao();
 
             $stmt = $conn->prepare($sql);
-            $stmt->bindValue(1, $categoria->getId());
+            $stmt->bindValue(1, $id);
             $stmt->execute();
             $conn = null;
         } catch (PDOException $e) {
