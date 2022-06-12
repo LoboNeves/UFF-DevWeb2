@@ -1,9 +1,9 @@
-<h1>Dashboard Vendedor</h1>
+<h1>Dashboard Comprador</h1>
 <?php
 if (isset($_SESSION['id']) && isset($_SESSION['nomeFuncionario'])) : ?>
 
     <div class="alert alert-success" role="alert">
-        <h5>Vendedor logado com sucesso</h5>
+        <h5>Comprador logado com sucesso</h5>
     </div>
     <div class="row">
         <div class="card mt-3 border-0">

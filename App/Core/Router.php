@@ -36,7 +36,26 @@ $route->get("/navegavenda/{numPag}", "Venda:ajax_lista");
 $route->get("/alteracaovenda/{id}", "Venda:alterarVenda");
 $route->post("/gravaralteracaovenda", "Venda:gravarAlterar");
 $route->get("/excluirvenda/{id}", "Venda:excluirVenda");
-
+/**
+ * parte restrita - compradores
+ */
+$route->get("/DashboardComprador", "DashboardComprador:index");
+//CRUD Fornecedores
+$route->get("/Fornecedores", "Fornecedor:index");
+$route->get("/incluirfornecedor", "Fornecedor:incluir");
+$route->post("/salvarinclusaofornecedor", "Fornecedor:gravarInclusao");
+$route->get("/navegafornecedor/{numPag}", "Fornecedor:ajax_lista");
+$route->get("/alteracaofornecedor/{id}", "Fornecedor:alterarFornecedor");
+$route->post("/gravaralteracaofornecedor", "Fornecedor:gravarAlterar");
+$route->get("/excluirfornecedor/{id}", "Fornecedor:excluirFornecedor");
+//CRUD Categorias
+$route->get("/Categorias", "Categoria:index");
+$route->get("/incluircategoria", "Categoria:incluir");
+$route->post("/salvarinclusaocategoria", "Categoria:gravarInclusao");
+$route->get("/navegacategoria/{numPag}", "Categoria:ajax_lista");
+$route->get("/alteracaocategoria/{id}", "Categoria:alterarCategoria");
+$route->post("/gravaralteracaocategoria", "Categoria:gravarAlterar");
+$route->get("/excluircategoria/{id}", "Categoria:excluirCategoria");
 /**
  * ERROR
  */
