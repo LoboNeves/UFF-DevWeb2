@@ -33,7 +33,7 @@
             $("#valor_venda").val("");
             $("#id_cliente").val("");
             $("#id_produto").val("");
-            $("#id_funcionario").val("");// limpar os inputs
+            $("#id_funcionario").val("<?= $_SESSION['id'] ?>");// limpar os inputs
             // limpar as mensagens de erros de validação
             $("#mensagem_erro").html("");
             $("#mensagem_erro").removeClass("alert alert-danger")
@@ -108,7 +108,7 @@
             $("#valor_venda_alteracao").val("");
             $("#id_cliente_alteracao").val("");
             $("#id_produto_alteracao").val("");
-            $("#id_funcionario_alteracao").val("");
+            $("#id_funcionario_alteracao").val("<?= $_SESSION['id'] ?>");
             $("#mensagem_erro_alteracao").html("");
             $("#mensagem_erro_alteracao").removeClass("alert alert-danger")
 
@@ -126,7 +126,7 @@
                     $('[name="valor_venda_alteracao"]').val(data.valor_venda);
                     $('[name="id_cliente_alteracao"]').val(data.id_cliente);
                     $('[name="id_produto_alteracao"]').val(data.id_produto);
-                    $('[name="id_funcionario_alteracao"]').val(data.id_funcionario);
+                    $('[name="id_funcionario_alteracao"]').val("<?= $_SESSION['id'] ?>");
                     $('[name="id_alteracao"]').val(data.id);
 
                     $("#modalAlterarVenda").modal('show');

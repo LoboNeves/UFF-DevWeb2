@@ -66,10 +66,7 @@
                         <?php } endif;?>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label for="id_funcionario">Funcionario*</label>
-                        <input type="id_funcionario" class="form-control" id="id_funcionario" name="id_funcionario">
-                    </div>
+                    <input type="hidden" class="form-control" id="id_funcionario" name="id_funcionario" value="">
                 </form>
             </div>
             <div class="modal-footer">
@@ -129,10 +126,7 @@
                         <?php } endif;?>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label for="id_funcionario">Funcionario*</label>
-                        <input type="id_funcionario" class="form-control" id="id_funcionario_alteracao" name="id_funcionario_alteracao">
-                    </div>
+                    <input type="hidden" class="form-control" id="id_funcionario_alteracao" name="id_funcionario_alteracao" value="">
                 </form>
             </div>
             <div class="modal-footer">
