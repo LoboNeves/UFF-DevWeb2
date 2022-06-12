@@ -79,14 +79,14 @@ class FornecedorModel extends BaseModel{
         }
     }
     
-    public function delete($fornecedor)
+    public function delete($id)
     {
         try {
             $sql = "DELETE FROM fornecedores WHERE id = ?";
             $conn = FornecedorModel::getConexao();
 
             $stmt = $conn->prepare($sql);
-            $stmt->bindValue(1, $fornecedor->getId());
+            $stmt->bindValue(1, $id);
             $stmt->execute();
             $conn = null;
         } catch (PDOException $e) {

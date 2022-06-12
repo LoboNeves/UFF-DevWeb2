@@ -233,11 +233,21 @@ class Venda extends BaseController
             if ($_POST['CSRF_token'] == $_SESSION['CSRF_token']) :
 
                 $filters = [
-                    //'quantidade_venda_alteracao' => 'trim|sanitize_int'
+                    'quantidade_venda_alteracao' => 'trim',
+                    'data_venda_alteracao'    => 'trim|sanitize_string',
+                    'valor_venda_alteracao'    => 'trim',
+                    'id_cliente_alteracao'    => 'trim',
+                    'id_produto_alteracao'    => 'trim',
+                    'id_funcionario_alteracao'    => 'trim'
                 ];
 
                 $rules = [
-                    'quantidade_venda_alteracao'    => 'required|min_len,1|max_len,10'
+                    'quantidade_venda_alteracao'    => 'required|min_len,1|max_len,10|integer',
+                    'data_venda_alteracao'    => 'required',
+                    'valor_venda_alteracao'    => 'required|min_len,1|max_len,10|float',
+                    'id_cliente_alteracao'    => 'required|min_len,1|max_len,10|integer',
+                    'id_produto_alteracao'    => 'required|min_len,1|max_len,10|integer',
+                    'id_funcionario_alteracao'    => 'required|min_len,1|max_len,10|integer'
                 ];
 
                 $validacao = new Validador("pt-br");
