@@ -228,12 +228,26 @@ class Cliente extends BaseController
             if ($_POST['CSRF_token'] == $_SESSION['CSRF_token']) :
 
                 $filters = [
-                    'nome_alteracao' => 'trim|sanitize_string|upper_case',
+                    'nome_alteracao' => 'trim|sanitize_string',
+                    'cpf_alteracao' => 'trim|sanitize_string',
+                    'endereco_alteracao' => 'trim|sanitize_string',
+                    'bairro_alteracao' => 'trim|sanitize_string',
+                    'cidade_alteracao' => 'trim|sanitize_string',
+                    'uf_alteracao' => 'trim|sanitize_string|upper_case',
+                    'cep_alteracao' => 'trim',
+                    'telefone_alteracao' => 'trim',
                     'email_alteracao' => 'trim|sanitize_email|lower_case'
                 ];
-
+            
                 $rules = [
                     'nome_alteracao'    => 'required|min_len,2|max_len,40',
+                    'cpf_alteracao' => 'required|exact_len,14',
+                    'endereco_alteracao' => 'required|max_len,40',
+                    'bairro_alteracao' => 'required|max_len,40',
+                    'cidade_alteracao' => 'required|max_len,40',
+                    'uf_alteracao' => 'required|exact_len,2',
+                    'cep_alteracao' => 'required|exact_len,8',
+                    'telefone_alteracao' => 'required|between_len,8;13',
                     'email_alteracao'  => 'required|valid_email'
                 ];
 
