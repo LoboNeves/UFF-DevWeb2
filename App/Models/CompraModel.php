@@ -73,14 +73,14 @@ class CompraModel extends BaseModel{
         }
     }
     
-    public function delete($compra)
+    public function delete($id)
     {
         try {
             $sql = "DELETE FROM compras WHERE id = ?";
             $conn = CompraModel::getConexao();
 
             $stmt = $conn->prepare($sql);
-            $stmt->bindValue(1, $compra->getId());
+            $stmt->bindValue(1, $id);
             $stmt->execute();
             $conn = null;
         } catch (PDOException $e) {

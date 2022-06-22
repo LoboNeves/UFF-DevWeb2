@@ -56,6 +56,14 @@ $route->get("/navegacategoria/{numPag}", "Categoria:ajax_lista");
 $route->get("/alteracaocategoria/{id}", "Categoria:alterarCategoria");
 $route->post("/gravaralteracaocategoria", "Categoria:gravarAlterar");
 $route->get("/excluircategoria/{id}", "Categoria:excluirCategoria");
+//CRUD Compras
+$route->get("/Compras", "Compra:index");
+$route->get("/incluircompra", "Compra:incluir");
+$route->post("/salvarinclusaocompra", "Compra:gravarInclusao");
+$route->get("/navegacompra/{numPag}", "Compra:ajax_lista");
+$route->get("/alteracaocompra/{id}", "Compra:alterarCompra");
+$route->post("/gravaralteracaocompra", "Compra:gravarAlterar");
+$route->get("/excluircompra/{id}", "Compra:excluirCompra");
 /**
  * ERROR
  */
