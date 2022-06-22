@@ -45,6 +45,12 @@ class Venda extends BaseController
             $produtos_lista = $produtoModel->read()->fetchAll(\PDO::FETCH_ASSOC);
             $data = ['produtos_lista' => $produtos_lista];
 
+            $clienteModel = $this->model("ClienteModel");
+
+            //Criando clientes_lista e mandando para a view para fazer o select box só com os clientes permitidos na view.
+            $clientes_lista = $clienteModel->read()->fetchAll(\PDO::FETCH_ASSOC);
+            $data += ['clientes_lista' => $clientes_lista];
+
             $this->view('venda/index', $data, 'venda/vendajs');
         else :
             Funcoes::redirect("Home");

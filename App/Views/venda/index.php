@@ -50,7 +50,14 @@
                     </div>
                     <div class="form-group">
                         <label for="id_cliente">Cliente*</label>
-                        <input type="id_cliente" class="form-control" id="id_cliente" name="id_cliente">
+                        <select type="id_cliente" class="form-control" id="id_cliente" name="id_cliente">
+                        <?php
+                        $clientes = $data['clientes_lista'];
+                        if (!empty($clientes)) :
+                            foreach ($clientes as $cliente) { ?>
+                                    <option value="<?= $cliente['id']; ?>"><?= $cliente['nome']; ?></option>
+                        <?php } endif;?>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="id_produto">Produto*</label>
