@@ -38,6 +38,7 @@
                         <a class="nav-item nav-link text-success" href="<?= URL_BASE ?>/Fornecedores">Fornecedores</a>
                         <a class="nav-item nav-link text-success" href="<?= URL_BASE ?>/Categorias">Categorias</a>
                         <a class="nav-item nav-link text-success" href="<?= URL_BASE ?>/Compras">Compras</a>
+                        <a class="nav-item nav-link text-success" href="<?= URL_BASE ?>/Produtos">Produtos</a>
 
                     <?php endif ?>
                     <a class="nav-item nav-link text-danger" href="<?= URL_BASE ?>/logout">Logout</a>

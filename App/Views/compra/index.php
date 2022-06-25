@@ -130,9 +130,7 @@
                         $produtos = $data['produtos_lista'];
                         if (!empty($produtos)) :
                             foreach ($produtos as $produto) { ?>
-                                <?php if ($produto['quantidade_disponível'] > 0 && $produto['liberado_venda'] == "S") : ?>
                                     <option value="<?= $produto['id']; ?>"><?= $produto['nome_produto']; ?></option>
-                                <?php endif; ?>
                         <?php } endif;?>
                         </select>
                     </div>

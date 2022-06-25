@@ -15,7 +15,7 @@ class Produto
         $this->preco_venda = 0.0;
         $this->quantidade_disponível = 0;
         $this->liberado_venda = "";
-        $this->id_categoria = "";
+        $this->id_categoria = 0;
     }
 
     public function getId ()

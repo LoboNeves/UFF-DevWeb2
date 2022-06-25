@@ -75,14 +75,14 @@ class ProdutoModel extends BaseModel{
         }
     }
     
-    public function delete($produto)
+    public function delete($id)
     {
         try {
             $sql = "DELETE FROM produtos WHERE id = ?";
             $conn = ProdutoModel::getConexao();
 
             $stmt = $conn->prepare($sql);
-            $stmt->bindValue(1, $produto->getId());
+            $stmt->bindValue(1, $id);
             $stmt->execute();
             $conn = null;
         } catch (PDOException $e) {
