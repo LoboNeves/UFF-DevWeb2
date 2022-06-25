@@ -7,5 +7,5 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'da253f61703e9c22a5a34f228526f05a' => $vendorDir . '/wixel/gump/gump.class.php',
-    '63694871ff9cc4544e8745183b10b372' => $baseDir . '/App/Config/config.php',
+    'aafd65e732fda5822d5db479193584b4' => $baseDir . '/App/Core/Config.php',
 );
