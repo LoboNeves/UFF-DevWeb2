@@ -74,7 +74,7 @@ class AcessoRestrito extends BaseController
                         $senha_hash = $hash_senha_fake;  // não achou o usuário usa hash fake*/
                     endif;
 
-                    if ($senha_enviada == $senha_bd) :
+                    if (isset($senha_bd) && $senha_enviada == $senha_bd) :
 
                         // apagar CAPTCHA_CODE
                         unset($_SESSION['CAPTCHA_CODE']);

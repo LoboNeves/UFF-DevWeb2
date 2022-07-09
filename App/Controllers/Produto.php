@@ -78,7 +78,7 @@ class Produto extends BaseController
                 $corpoTabela .= "<td>" . htmlentities(utf8_encode($produto['liberado_venda'])) . "</td>";
                 $corpoTabela .= "<td>" . htmlentities(utf8_encode($produto['id_categoria'])) . "</td>";
                 $corpoTabela .= "<td>" . '<button type="button" id="btAlterar" data-id="' . $produto['id'] . '" class="btn btn-outline-primary">Alterar</button>
-                                          <button type="button" id="btExcluir" data-id="' . $produto['id'] . '" data-nome="' . $produto['nome_produto'] . '"class="btn btn-outline-primary">Excluir</button>'
+                                          <button type="button" id="btExcluir" data-id="' . $produto['id'] . '" data-nome="' . $produto['nome_produto'] . '" class="btn btn-outline-primary">Excluir</button>'
                     . "</td>";
                 $corpoTabela .= "</tr>";
             }
