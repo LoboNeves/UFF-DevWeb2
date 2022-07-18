@@ -40,22 +40,6 @@ class FuncionarioModel extends BaseModel
         }
     }
 
-    public function getHashID($hashid)
-    {
-        try {
-
-            $sql = "SELECT * FROM funcionarios WHERE hashid like ?";
-            $conn = FuncionarioModel::getConexao();
-            $stmt = $conn->prepare($sql);
-            $stmt->bindValue(1, $hashid, PDO::PARAM_STR);
-            $stmt->execute();
-            $conn = null;
-            return  $stmt->fetch(PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-            die('Query falhou: ' . $e->getMessage());
-        }
-    }
-
     public function read()
     {
         try {
@@ -72,7 +56,7 @@ class FuncionarioModel extends BaseModel
     public function update($funcionario)
     {
         try {
-            $sql = "UPDATE funcionarios SET nome = ?, cpf = ?, senha = ?, papel = ? WHERE hashid = ?";
+            $sql = "UPDATE funcionarios SET nome = ?, cpf = ?, senha = ?, papel = ? WHERE id = ?";
             $conn = FuncionarioModel::getConexao();
 
             $stmt = $conn->prepare($sql);
@@ -80,7 +64,7 @@ class FuncionarioModel extends BaseModel
             $stmt->bindValue(2,$funcionario->getCpf());
             $stmt->bindValue(3,$funcionario->getSenha());
             $stmt->bindValue(4,$funcionario->getPapel());
-            $stmt->bindValue(5,$funcionario->getHashId());
+            $stmt->bindValue(5,$funcionario->getId());
             $stmt->execute();
             $conn = null;
         } catch (PDOException $e) {
@@ -88,14 +72,14 @@ class FuncionarioModel extends BaseModel
         }
     }
 
-    public function delete($hashId)
+    public function delete($id)
     {
         try {
-            $sql = "DELETE FROM funcionarios WHERE hashid = ?";
+            $sql = "DELETE FROM funcionarios WHERE id = ?";
             $conn = FuncionarioModel::getConexao();
 
             $stmt = $conn->prepare($sql);
-            $stmt->bindValue(1,$hashId);
+            $stmt->bindValue(1,$id);
             $stmt->execute();
             $conn = null;
         } catch (PDOException $e) {
@@ -152,22 +136,6 @@ class FuncionarioModel extends BaseModel
                 return []; // retornado array vazio... não há registros no BD    
             endif;
         } catch (\PDOException $e) {
-            die('Query falhou: ' . $e->getMessage());
-        }
-    }
-
-    public function createHashID($id, $hashId)
-    {
-        try {
-            $sql = "UPDATE funcionarios SET hashid = ? WHERE id = ?";
-            $conn = FuncionarioModel::getConexao();
-
-            $stmt = $conn->prepare($sql);
-            $stmt->bindValue(1, $hashId);
-            $stmt->bindValue(2, $id);
-            $stmt->execute();
-            $conn = null;
-        } catch (PDOException $e) {
             die('Query falhou: ' . $e->getMessage());
         }
     }
