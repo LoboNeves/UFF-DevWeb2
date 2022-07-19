@@ -84,6 +84,10 @@ $route->get("/navegafuncionario/{numPag}", "Funcionario:ajax_lista");
 $route->get("/alteracaofuncionario/{id}", "Funcionario:alterarFuncionario");
 $route->post("/gravaralteracaofuncionario", "Funcionario:gravarAlterar");
 $route->get("/excluirfuncionario/{id}", "Funcionario:excluirFuncionario");
+//CRUD Relatório de estoque dos produtos
+$route->get("/RelatorioProdutos", "RelatorioProduto:index");
+//CRUD Relatório de vendas dos produtos
+$route->get("/RelatorioVendas", "RelatorioVenda:index");
 /**
  * ERROR
  */
